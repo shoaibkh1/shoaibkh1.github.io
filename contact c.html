@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Shoaib Khan</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* REUSING CORE VARIABLES FOR CONSISTENCY */
+        :root {
+            --bg: #050505;
+            --surface: #121212; 
+            --surface-highlight: #1E1E1E;
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #2997ff; 
+            --text: #f5f5f7;
+            --text-muted: #86868b;
+            --easypaisa: #37c25e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        a, button { outline: none !important; }
+
+        /* CURSOR */
+        .cursor-dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: white; border-radius: 50%; pointer-events: none; z-index: 100001; mix-blend-mode: difference; }
+        .cursor-outline { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.5); border-radius: 50%; pointer-events: none; z-index: 100000; transition: all 0.2s; }
+        body:hover .cursor-outline.hovered { width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-color: transparent; backdrop-filter: blur(2px); }
+
+        /* NAV */
+        nav { position: fixed; top: 0; width: 100%; padding: 25px 0; z-index: 1000; background: rgba(5,5,5,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+        .logo { font-weight: 800; font-size: 1.5rem; color: white; text-decoration: none; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: white; }
+
+        /* CONTACT LAYOUT */
+        .contact-section { min-height: 100vh; display: flex; align-items: center; padding: 150px 5% 50px 5%; max-width: 1400px; margin: 0 auto; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; width: 100%; }
+
+        .info-card {
+            background: var(--surface); padding: 50px; border-radius: 30px; border: 1px solid var(--border);
+            position: relative; overflow: hidden;
+        }
+        .info-card::before { content:''; position: absolute; top:0; left:0; width:100%; height:5px; background: var(--accent); }
+
+        .contact-detail { margin-bottom: 30px; }
+        .contact-detail h3 { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .contact-detail p, .contact-detail a { font-size: 1.5rem; color: white; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .contact-detail a:hover { color: var(--accent); }
+
+        /* BANK CARDS */
+        .payment-box { margin-top: 40px; background: var(--surface-highlight); padding: 30px; border-radius: 20px; border: 1px solid var(--border); }
+        .bank-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .bank-row:last-child { margin-bottom: 0; padding-bottom: 0; border: none; }
+        .bank-info { display: flex; flex-direction: column; }
+        .bank-name { font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+        .acc-num { font-family: monospace; color: var(--accent); font-size: 1.1rem; }
+        .copy-btn { background: rgba(255,255,255,0.1); border: none; color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.9rem; transition: 0.3s; }
+        .copy-btn:hover { background: var(--accent); }
+
+        @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } .info-card { padding: 30px; } }
+    </style>
+</head>
+<body>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo hover-trigger">SHOAIB KHAN</a>
+            <div class="nav-links">
+                <a href="index.html" class="hover-trigger">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="contact-section">
+        <div class="contact-grid">
+            <div class="reveal">
+                <h1 style="font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 30px; font-weight: 800;">Let's start a <br> <span style="color:var(--accent)">conversation.</span></h1>
+                <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; max-width: 500px;">
+                    Whether you need a full brand overhaul, vehicle fabrication designs, or a sleek print campaign, I'm ready to help you stand out in the market.
+                </p>
+                <div style="display:flex; gap:15px;">
+                    <a href="https://wa.me/923105532979" target="_blank" class="hover-trigger" style="padding:15px 30px; background:var(--easypaisa); color:white; border-radius:50px; text-decoration:none; font-weight:600;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                    <a href="mailto:mrshoaibkh1@gmail.com" class="hover-trigger" style="padding:15px 30px; border:1px solid var(--border); color:white; border-radius:50px; text-decoration:none; font-weight:600;">Email Me</a>
+                </div>
+            </div>
+
+            <div class="info-card reveal hover-trigger">
+                <div class="contact-detail">
+                    <h3>Location</h3>
+                    <p>Peshawar, Khyber Pakhtunkhwa</p>
+                </div>
+                <div class="contact-detail">
+                    <h3>Email</h3>
+                    <a href="mailto:mrshoaibkh1@gmail.com">mrshoaibkh1@gmail.com</a>
+                </div>
+                <div class="contact-detail">
+                    <h3>Phone</h3>
+                    <a href="tel:+923105532979">+92 310 5532979</a>
+                </div>
+
+                <div class="payment-box">
+                    <h3 style="color:white; margin-bottom:20px; font-size:1.1rem;">Payment Details</h3>
+                    
+                    <div class="bank-row">
+                        <div class="bank-info">
+                            <span class="bank-name"><i class="fas fa-university"></i> HabibMetro</span>
+                            <span class="acc-num" id="bank-num">6992829301714101099</span>
+                            <span style="font-size:0.8rem; color:#666;">Shoaib Khan</span>
+                        </div>
+                        <button class="copy-btn hover-trigger" onclick="copyText('bank-num')">Copy</button>
+                    </div>
+
+                    <div class="bank-row">
+                        <div class="bank-info">
+                            <span class="bank-name" style="color:var(--easypaisa)"><i class="fas fa-mobile-alt"></i> Easypaisa</span>
+                            <span class="acc-num" id="ep-num">03105532979</span>
+                            <span style="font-size:0.8rem; color:#666;">Shoaib Khan</span>
+                        </div>
+                        <button class="copy-btn hover-trigger" onclick="copyText('ep-num')">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Copy Function
+        function copyText(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Account Number Copied!");
+            });
+        }
+
+        // Cursor Logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+            cursorOutline.animate({
+                transform: `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`
+            }, { duration: 500, fill: "forwards" });
+        });
+        document.querySelectorAll('.hover-trigger').forEach(item => {
+            item.addEventListener('mouseenter', () => cursorOutline.classList.add('hovered'));
+            item.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovered'));
+        });
+    </script>
+</body>
+</html>

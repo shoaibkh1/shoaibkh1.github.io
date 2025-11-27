@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOAIB KHAN | Visual Engineer</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { --bg: #050505; --accent: #2997ff; --text: #ffffff; --surface: #111; --border: rgba(255, 255, 255, 0.1); }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
+        body { 
+            background: var(--bg); color: var(--text); font-family: 'General Sans', sans-serif; 
+            height: 100vh; overflow: hidden; display: flex; flex-direction: column; 
+            perspective: 1000px;
+        }
+
+        /* --- CURSOR --- */
+        .cursor { position: fixed; top: 0; left: 0; width: 10px; height: 10px; background: white; border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference; transform: translate(-50%, -50%); }
+        .cursor-f { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: 0.15s ease-out; }
+
+        /* --- BACKGROUND OUTLINE MARQUEE --- */
+        .marquee-wrap {
+            position: absolute; top: 50%; left: 0; width: 100%;
+            transform: translateY(-50%) translateZ(-300px) rotate(-5deg);
+            overflow: hidden; pointer-events: none; opacity: 0.2; z-index: 0;
+        }
+        .marquee-text {
+            display: flex; white-space: nowrap; gap: 50px;
+            font-family: 'Clash Display', sans-serif; 
+            font-size: 15vw; font-weight: 800; 
+            color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.5); 
+            animation: scroll 40s linear infinite;
+        }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- 3D CENTER STAGE --- */
+        .stage { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; transform-style: preserve-3d; z-index: 2; }
+        .card-3d { position: relative; width: 400px; height: 550px; transform-style: preserve-3d; transition: transform 0.1s ease-out; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; box-shadow: 0 40px 100px rgba(0,0,0,0.8); border: 1px solid var(--border); }
+
+        /* --- INFO BOX --- */
+        .info-box {
+            position: absolute; bottom: 40px; right: -60px; text-align: right;
+            background: rgba(15, 15, 15, 0.9); backdrop-filter: blur(20px);
+            padding: 30px; border: 1px solid var(--border); border-radius: 12px;
+            transform: translateZ(60px); min-width: 280px;
+        }
+        h1 { margin: 0; font-family: 'Clash Display'; font-size: 3rem; line-height: 0.9; text-transform: uppercase; font-weight: 700; }
+        .typewriter { color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; font-size: 0.9rem; }
+
+        /* --- NAVIGATION DOCK --- */
+        .nav-dock { 
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); 
+            display: flex; gap: 8px; background: rgba(20,20,20,0.9); backdrop-filter: blur(15px); 
+            padding: 10px 15px; border-radius: 50px; border: 1px solid var(--border); z-index: 100; 
+        }
+        .nav-item { color: #aaa; text-decoration: none; padding: 10px 20px; border-radius: 30px; transition: 0.3s; font-weight: 500; font-size: 0.9rem; }
+        .nav-item:hover { color: white; background: rgba(255,255,255,0.1); }
+        .nav-item.active { background: white; color: black; font-weight: 700; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 800px) {
+            .marquee-wrap { display: none; }
+            .card-3d { width: 85%; height: auto; aspect-ratio: 3/4; transform: none !important; }
+            .info-box { right: auto; bottom: -40px; width: 100%; text-align: center; }
+            .nav-dock { width: 90%; justify-content: space-between; overflow-x: auto; bottom: 20px; }
+            .nav-item { font-size: 0.75rem; padding: 8px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div><div class="cursor-f"></div>
+
+    <div class="marquee-wrap">
+        <div class="marquee-text">
+            <span>SHOAIB KHAN — GRAPHIC DESIGNER —&nbsp;</span>
+            <span>SHOAIB KHAN — GRAPHIC DESIGNER —&nbsp;</span>
+        </div>
+    </div>
+
+    <div class="stage">
+        <div class="card-3d" id="card">
+            <img src="sk.jpg" class="card-img" alt="Shoaib Khan">
+            <div class="info-box">
+                <h1>Shoaib<br>Khan</h1>
+                <div class="typewriter" id="typewriter"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-dock">
+        <a href="index.html" class="nav-item active hover-trig">Home</a>
+        <a href="services.html" class="nav-item hover-trig">Services</a>
+        <a href="portfolio.html" class="nav-item hover-trig">Work</a>
+        <a href="process.html" class="nav-item hover-trig">Process</a>
+        <a href="about.html" class="nav-item hover-trig">About</a>
+        <a href="contact.html" class="nav-item hover-trig">Contact</a>
+    </nav>
+
+    <script>
+        // 1. CURSOR
+        const cursor = document.querySelector('.cursor'); const cursorF = document.querySelector('.cursor-f');
+        window.addEventListener('mousemove', e => { 
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+            cursorF.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`; 
+        });
+
+        // 2. 3D TILT (Desktop Only)
+        if(window.innerWidth > 800) {
+            const card = document.getElementById('card');
+            document.addEventListener('mousemove', (e) => {
+                const x = (window.innerWidth / 2 - e.pageX) / 25;
+                const y = (window.innerHeight / 2 - e.pageY) / 25;
+                card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+            });
+        }
+
+        // 3. TYPEWRITER EFFECT
+        const roles = ["Graphic Designer", "Print Specialist", "Brand Architect"];
+        let i = 0, j = 0, isDeleting = false, el = document.getElementById('typewriter');
+        
+        function type() {
+            el.innerHTML = roles[i].substring(0, j);
+            if(isDeleting) j--; else j++;
+            let speed = isDeleting ? 50 : 100;
+            if(!isDeleting && j === roles[i].length + 1) { speed = 2000; isDeleting = true; }
+            else if(isDeleting && j === 0) { isDeleting = false; i = (i + 1) % roles.length; speed = 500; }
+            setTimeout(type, speed);
+        }
+        type();
+
+        // 4. HOVER SCALE
+        document.querySelectorAll('.hover-trig').forEach(b => {
+            b.addEventListener('mouseenter', () => { cursorF.style.transform += " scale(1.5)"; cursorF.style.background = "rgba(255,255,255,0.1)"; });
+            b.addEventListener('mouseleave', () => { cursorF.style.background = "transparent"; });
+        });
+    </script>
+</body>
+</html>

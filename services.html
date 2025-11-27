@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Services | Shoaib Khan</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CORE CSS */
+        :root { --bg: #050505; --accent: #2997ff; --text: #ffffff; --surface: #111; --border: rgba(255, 255, 255, 0.1); }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        body { background: var(--bg); color: var(--text); font-family: 'General Sans', sans-serif; padding: 50px 5% 150px 5%; min-height: 100vh; }
+        
+        .cursor { position: fixed; top:0; left:0; width: 10px; height: 10px; background: white; border-radius: 50%; pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); mix-blend-mode: difference; }
+        .cursor-f { position: fixed; top:0; left:0; width: 40px; height: 40px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: 0.15s; }
+
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; }
+        h1 { font-family: 'Clash Display'; font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; margin: 0; }
+        .back-btn { border: 1px solid var(--border); padding: 10px 25px; border-radius: 50px; color: #888; text-decoration: none; transition: 0.3s; }
+        .back-btn:hover { border-color: var(--accent); color: white; background: rgba(41, 151, 255, 0.1); }
+
+        /* FOOTER */
+        footer { position: fixed; bottom: 0; left: 0; width: 100%; padding: 20px 50px; background: rgba(0,0,0,0.95); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+        .socials { display: flex; gap: 20px; font-size: 1.2rem; }
+        .socials a { color: #888; transition: 0.3s; } .socials a:hover { color: var(--accent); }
+        .book-btn { background: var(--accent); color: black; padding: 10px 25px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+        .book-btn:hover { background: white; box-shadow: 0 0 20px var(--accent); }
+
+        /* GRID */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 40px; border-radius: 20px; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); background: rgba(41, 151, 255, 0.05); }
+        .icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
+        h3 { font-family: 'Clash Display'; font-size: 1.8rem; margin-bottom: 15px; }
+        ul { padding-left: 20px; color: #aaa; line-height: 1.8; }
+
+        @media(max-width: 768px) { body { padding-bottom: 180px; } footer { flex-direction: column; gap: 15px; padding: 20px; text-align: center; } .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div><div class="cursor-f"></div>
+
+    <header>
+        <h1>Expertise</h1>
+        <a href="index.html" class="back-btn hover-trig">Back Home</a>
+    </header>
+
+    <div class="grid">
+        <div class="card hover-trig">
+            <i class="fas fa-swatchbook icon"></i>
+            <h3>Brand Identity</h3>
+            <ul><li>Logo Design & Vector Art</li><li>Stationery Kits</li><li>Brand Guidelines</li></ul>
+        </div>
+        <div class="card hover-trig">
+            <i class="fas fa-print icon"></i>
+            <h3>Print Media</h3>
+            <ul><li>Billboards & Hoardings</li><li>Flyers & Menus</li><li>Large Format Vinyls</li></ul>
+        </div>
+        <div class="card hover-trig">
+            <i class="fas fa-box icon"></i>
+            <h3>Packaging</h3>
+            <ul><li>Product Box Die-Lines</li><li>Shopping Bags</li><li>3D Mockups</li></ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="socials">
+            <a href="https://pk.linkedin.com/in/shoaibkh1" target="_blank" class="hover-trig"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://behance.net/skgraphics4" target="_blank" class="hover-trig"><i class="fab fa-behance"></i></a>
+            <a href="https://share.google/UTxeuYakVupmYcUzj" target="_blank" class="hover-trig"><i class="fab fa-google"></i></a>
+        </div>
+        <div style="color:#666; font-size:0.8rem;">© 2025 Shoaib Khan.</div>
+        <a href="https://wa.me/923105532979?text=I%20want%20to%20book%20an%20appointment" target="_blank" class="book-btn hover-trig">Book Appointment</a>
+    </footer>
+
+    <script>
+        const cursor = document.querySelector('.cursor'); const cursorF = document.querySelector('.cursor-f');
+        window.addEventListener('mousemove', e => { 
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+            cursorF.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`; 
+        });
+        document.querySelectorAll('.hover-trig').forEach(el => {
+            el.addEventListener('mouseenter', () => { cursorF.style.transform += " scale(1.5)"; cursorF.style.background = "rgba(255,255,255,0.1)"; });
+            el.addEventListener('mouseleave', () => { cursorF.style.transform = cursorF.style.transform.replace(" scale(1.5)", ""); cursorF.style.background = "transparent"; });
+        });
+    </script>
+</body>
+</html>
