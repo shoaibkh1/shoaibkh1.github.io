@@ -9,15 +9,28 @@
     <style>
         :root { --bg: #050505; --accent: #2997ff; --text: #ffffff; --surface: #111; --border: rgba(255, 255, 255, 0.1); }
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-        body { background: var(--bg); color: var(--text); font-family: 'General Sans', sans-serif; padding: 50px 5% 150px 5%; min-height: 100vh; }
         
+        /* FIX: 300px PADDING BOTTOM */
+        body { background: var(--bg); color: var(--text); font-family: 'General Sans', sans-serif; padding: 50px 5% 300px 5%; min-height: 100vh; }
+        
+        /* [SAME SHARED CSS AS INDEX.HTML] */
         .cursor { position: fixed; top:0; left:0; width: 10px; height: 10px; background: white; border-radius: 50%; pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); mix-blend-mode: difference; }
         .cursor-f { position: fixed; top:0; left:0; width: 40px; height: 40px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: 0.15s; }
-
         header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; }
         h1 { font-family: 'Clash Display'; font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; margin: 0; }
         .back-btn { border: 1px solid var(--border); padding: 10px 25px; border-radius: 50px; color: #888; text-decoration: none; transition: 0.3s; }
         .back-btn:hover { border-color: var(--accent); color: white; background: rgba(41, 151, 255, 0.1); }
+        footer { position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px 50px; background: rgba(0,0,0,0.95); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; z-index: 400; }
+        .socials { display: flex; gap: 20px; font-size: 1.2rem; }
+        .socials a { color: #888; transition: 0.3s; text-decoration: none; } .socials a:hover { color: var(--accent); }
+        .book-btn { background: var(--accent); color: black; padding: 10px 25px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+        .book-btn:hover { background: white; box-shadow: 0 0 20px var(--accent); }
+        .nav-dock { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; background: rgba(20,20,20,0.9); backdrop-filter: blur(15px); padding: 10px 15px; border-radius: 50px; border: 1px solid var(--border); z-index: 500; }
+        .nav-item { color: #aaa; text-decoration: none; padding: 10px 20px; border-radius: 30px; transition: 0.3s; font-weight: 500; font-size: 0.9rem; }
+        .nav-item:hover { color: white; background: rgba(255,255,255,0.1); }
+        .nav-item.active { background: white; color: black; font-weight: 700; }
+        .float-wa { position: fixed; right: 30px; bottom: 100px; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; transition: 0.3s; z-index: 600; border: 1px solid rgba(255,255,255,0.1); background: #25D366; text-decoration: none; }
+        .float-wa:hover { transform: scale(1.1); }
 
         /* GRID */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -27,22 +40,7 @@
         h3 { font-family: 'Clash Display'; font-size: 1.8rem; margin-bottom: 15px; }
         ul { padding-left: 20px; color: #aaa; line-height: 1.8; }
 
-        /* UPDATED FOOTER & NAV CSS */
-        footer { position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px 50px; background: rgba(0,0,0,0.95); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; z-index: 400; }
-        .socials { display: flex; gap: 20px; font-size: 1.2rem; }
-        .socials a { color: #888; transition: 0.3s; text-decoration: none; } .socials a:hover { color: var(--accent); }
-        .book-btn { background: var(--accent); color: black; padding: 10px 25px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
-        .book-btn:hover { background: white; box-shadow: 0 0 20px var(--accent); }
-
-        .nav-dock { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; background: rgba(20,20,20,0.9); backdrop-filter: blur(15px); padding: 10px 15px; border-radius: 50px; border: 1px solid var(--border); z-index: 500; }
-        .nav-item { color: #aaa; text-decoration: none; padding: 10px 20px; border-radius: 30px; transition: 0.3s; font-weight: 500; font-size: 0.9rem; }
-        .nav-item:hover { color: white; background: rgba(255,255,255,0.1); }
-        .nav-item.active { background: white; color: black; font-weight: 700; }
-
-        .float-wa { position: fixed; right: 30px; bottom: 100px; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; transition: 0.3s; z-index: 600; border: 1px solid rgba(255,255,255,0.1); background: #25D366; text-decoration: none; }
-        .float-wa:hover { transform: scale(1.1); }
-
-        @media(max-width: 768px) { body { padding-bottom: 180px; } footer { flex-direction: column; gap: 10px; padding: 15px; text-align: center; } .grid { grid-template-columns: 1fr; } .nav-dock { width: 95%; overflow-x: auto; bottom: 80px; } .float-wa { bottom: 150px; right: 20px; } }
+        @media(max-width: 768px) { body { padding-bottom: 250px; } footer { flex-direction: column; gap: 10px; padding: 15px; text-align: center; } .grid { grid-template-columns: 1fr; } .nav-dock { width: 95%; overflow-x: auto; bottom: 80px; } .float-wa { bottom: 150px; right: 20px; } }
     </style>
 </head>
 <body>
@@ -100,7 +98,7 @@
         });
         document.querySelectorAll('.hover-trig').forEach(el => {
             el.addEventListener('mouseenter', () => { cursorF.style.transform += " scale(1.5)"; cursorF.style.background = "rgba(255,255,255,0.1)"; });
-            el.addEventListener('mouseleave', () => { cursorF.style.transform = cursorF.style.transform.replace(" scale(1.5)", ""); cursorF.style.background = "transparent"; });
+            el.addEventListener('mouseleave', () => { cursorF.style.background = "transparent"; });
         });
     </script>
 </body>
